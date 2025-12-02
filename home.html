@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="homeStyle.css">
-
 </head>
 
 <body>
     <div class="header">
         <h1>Tabela de avaliações</h1>
-        <div class="addReview">Adicionar avaliação</div>
+        <div class="addReview" onclick="newReview()">Adicionar avaliação</div>
     </div>
+
     <table>
         <thead>
             <tr>
@@ -24,11 +24,81 @@
             </tr>
         </thead>
 
-        <tbody id="tbody">
-
-        </tbody>
+        <tbody id="tbody"></tbody>
     </table>
-    <script src="homeScript.js"></script>
+
+
+    <!-- SCRIPT TODINHO AQUI -->
+    <script>
+        function getReviews() {
+            const raw = localStorage.getItem("reviews");
+            if (!raw) return [];
+
+            try {
+                const parsed = JSON.parse(raw);
+
+                if (Array.isArray(parsed)) return parsed;
+
+                if (parsed && typeof parsed === "object") return [parsed];
+
+                return [];
+            } catch (err) {
+                console.warn("JSON inválido no localStorage, resetando.", err);
+                return [];
+            }
+        }
+
+        function saveReviews(arr) {
+            localStorage.setItem("reviews", JSON.stringify(arr));
+        }
+
+        function escapeHtml(str) {
+            return str
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#39;");
+        }
+
+        function renderTable() {
+            const reviews = getReviews();
+            const tableBody = document.getElementById("tbody");
+
+            let rows = "";
+            for (const review of reviews) {
+                rows += `
+                <tr>
+                    <td>${escapeHtml(String(review.name || ""))}</td>
+                    <td>R$ ${escapeHtml(String(review.value || ""))}</td>
+                    <td>${escapeHtml(String(review.grade || ""))}</td>
+                    <td>${escapeHtml(String(review.obs || ""))}</td>
+                </tr>`;
+            }
+
+            tableBody.innerHTML = rows;
+        }
+
+        function newReview() {
+            const items = getReviews();
+
+            const newItem = {
+                name: "Produto Teste",
+                value: 5,
+                grade: 5,
+                obs: "Sem comentário"
+            };
+
+            items.push(newItem);
+            saveReviews(items);
+
+            renderTable();
+            console.log("Adicionado:", newItem);
+        }
+
+        document.addEventListener("DOMContentLoaded", renderTable);
+    </script>
+
 </body>
 
 </html>
