@@ -1,0 +1,56 @@
+ body {
+     font-family: Arial, sans-serif;
+     background: #111;
+     color: white;
+     margin: 0;
+     padding: 20px;
+ }
+
+ .header {
+     flex-direction: row;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+ }
+
+ .addReview {
+     background-color: #1554CC;
+     padding: 12px 28px;
+     border-color: #FFFFFF;
+     cursor: pointer;
+     border-radius: 8px;
+ }
+
+ .addReview:active {
+     background-color: #1949a0;
+     padding: 12px 28px;
+     border-color: #FFFFFF;
+     border-radius: 8px;
+ }
+
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     background: #1e1e1e;
+ }
+
+ th,
+ td {
+     border: 1px solid #333;
+     padding: 12px;
+     text-align: left;
+     vertical-align: top;
+
+     /* quebra de linha */
+     white-space: pre-wrap;
+     word-break: break-word;
+ }
+
+ th {
+     background: #272727;
+ }
+
+ .col {
+     width: auto;
+ }
