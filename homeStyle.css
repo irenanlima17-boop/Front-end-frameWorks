@@ -3,15 +3,36 @@
      background: #111;
      color: white;
      margin: 0;
-     padding: 20px;
  }
 
  .header {
-     flex-direction: row;
      width: 100%;
      display: flex;
      align-items: center;
      justify-content: space-between;
+
+     padding: 20px 25px;
+
+     background: linear-gradient(90deg, #0c0c0c, #1a1a1a);
+     border-bottom: 2px solid #1554CC;
+
+     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.35);
+
+     font-family: "Arial", sans-serif;
+
+     /* 🔥 Correção do corte */
+     box-sizing: border-box;
+     flex-wrap: wrap;
+     overflow: visible;
+ }
+
+ .header h1 {
+     margin: 0;
+     font-size: 26px;
+     font-weight: 600;
+     letter-spacing: 1px;
+     color: #ffffffee;
+     text-shadow: 0px 0px 8px rgba(21, 84, 204, 0.6);
  }
 
  .buttons {
@@ -28,13 +49,6 @@
  }
 
 
- .addReview:active {
-     background-color: #1949a0;
-     padding: 12px 28px;
-     border-color: #FFFFFF;
-     border-radius: 8px;
- }
-
  table {
      width: 100%;
      border-collapse: collapse;
@@ -47,8 +61,6 @@
      padding: 12px;
      text-align: left;
      vertical-align: top;
-
-     /* quebra de linha */
      white-space: pre-wrap;
      word-break: break-word;
  }
@@ -61,7 +73,6 @@
      width: auto;
  }
 
- /* overlay */
  .overlay {
      position: fixed;
      inset: 0;
@@ -79,9 +90,6 @@
      opacity: 1;
      pointer-events: auto;
  }
-
-
- /* modal */
 
 
  .modal-box {
