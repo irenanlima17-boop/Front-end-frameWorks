@@ -14,13 +14,19 @@
      justify-content: space-between;
  }
 
- .addReview {
+ .buttons {
+     display: flex;
+ }
+
+ .button {
      background-color: #1554CC;
      padding: 12px 28px;
+     margin-left: 8px;
      border-color: #FFFFFF;
      cursor: pointer;
      border-radius: 8px;
  }
+
 
  .addReview:active {
      background-color: #1949a0;
@@ -53,4 +59,131 @@
 
  .col {
      width: auto;
+ }
+
+ /* overlay */
+ .overlay {
+     position: fixed;
+     inset: 0;
+     background: rgba(0, 0, 0, 0.5);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     opacity: 0;
+     pointer-events: none;
+     transition: 0.2s;
+ }
+
+
+ .overlay.show {
+     opacity: 1;
+     pointer-events: auto;
+ }
+
+
+ /* modal */
+
+
+ .modal-box {
+     background: #ffffff10;
+     backdrop-filter: blur(10px);
+     padding: 20px;
+     border-radius: 8px;
+     flex-direction: column;
+     align-items: center;
+
+ }
+
+ .form {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+
+ .modal-box h2 {
+     margin: 0 0 20px;
+     text-align: center;
+     color: white;
+     font-weight: 300;
+ }
+
+ .modal-box a {
+     margin: 0 0 20px;
+     text-align: center;
+     color: white;
+     font-weight: 300;
+ }
+
+
+ .modal-box input {
+     width: auto;
+     padding: 12px;
+     margin: 10px 0;
+     border: none;
+     border-radius: 8px;
+     outline: none;
+     background: #ffffff20;
+     color: #fff;
+ }
+
+
+ .modal-box button {
+     width: auto;
+     padding: 12px;
+     margin-top: 15px;
+     border: none;
+     border-radius: 8px;
+     background: #2979FF;
+     color: #fff;
+     cursor: pointer;
+     font-size: 16px;
+     transition: 0.2s;
+ }
+
+ .rate {
+     display: none;
+ }
+
+ .modal-box button:hover {
+     background: #1554CC;
+ }
+
+ .rating {
+     align-items: center;
+     justify-content: center;
+     flex-direction: row-reverse;
+     display: flex;
+ }
+
+ .rating:not(:checked)>input {
+     position: absolute;
+     appearance: none;
+ }
+
+ .rating:not(:checked)>label {
+     float: right;
+     cursor: pointer;
+     font-size: 30px;
+     color: #666;
+ }
+
+ .rating:not(:checked)>label:before {
+     content: "★";
+ }
+
+ .rating>input:checked+label:hover,
+ .rating>input:checked+label:hover~label,
+ .rating>input:checked~label:hover,
+ .rating>input:checked~label:hover~label,
+ .rating>input:hover~label:checked~label {
+     color: #e58e09
+ }
+
+ .rating:not(:checked)>label:hover,
+ .rating:not(:checked)>label:hover~label {
+     color: #ff9e0b
+ }
+
+ .rating>input:checked~label {
+     color: #ffa723
  }
